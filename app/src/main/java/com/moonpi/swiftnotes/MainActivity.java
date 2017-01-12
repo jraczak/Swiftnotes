@@ -185,48 +185,48 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
         Menu menu = toolbar.getMenu();
 
-        if (menu != null) {
-            // Get 'Search' menu item
-            searchMenu = menu.findItem(R.id.action_search);
-
-            if (searchMenu != null) {
-                // If the item menu not null -> get it's support action view
-                SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchMenu);
-
-                if (searchView != null) {
-                    // If searchView not null -> set query hint and open/query/close listeners
-                    searchView.setQueryHint(getString(R.string.action_search));
-                    searchView.setOnQueryTextListener(this);
-
-                    MenuItemCompat.setOnActionExpandListener(searchMenu,
-                            new MenuItemCompat.OnActionExpandListener() {
-
-                        @Override
-                        public boolean onMenuItemActionExpand(MenuItem item) {
-                            searchActive = true;
-                            newNoteButtonVisibility(false);
-                            // Disable long-click on listView to prevent deletion
-                            listView.setLongClickable(false);
-
-                            // Init realIndexes array
-                            realIndexesOfSearchResults = new ArrayList<Integer>();
-                            for (int i = 0; i < notes.length(); i++)
-                                realIndexesOfSearchResults.add(i);
-
-                            adapter.notifyDataSetChanged();
-
-                            return true;
-                        }
-
-                        @Override
-                        public boolean onMenuItemActionCollapse(MenuItem item) {
-                            searchEnded();
-                            return true;
-                        }
-                    });
-                }
-            }
-        }
+        //if (menu != null) {
+        //    // Get 'Search' menu item
+        //    searchMenu = menu.findItem(R.id.action_search);
+//
+        //    if (searchMenu != null) {
+        //        // If the item menu not null -> get it's support action view
+        //        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchMenu);
+//
+        //        if (searchView != null) {
+        //            // If searchView not null -> set query hint and open/query/close listeners
+        //            searchView.setQueryHint(getString(R.string.action_search));
+        //            searchView.setOnQueryTextListener(this);
+//
+        //            MenuItemCompat.setOnActionExpandListener(searchMenu,
+        //                    new MenuItemCompat.OnActionExpandListener() {
+//
+        //                @Override
+        //                public boolean onMenuItemActionExpand(MenuItem item) {
+        //                    searchActive = true;
+        //                    newNoteButtonVisibility(false);
+        //                    // Disable long-click on listView to prevent deletion
+        //                    listView.setLongClickable(false);
+//
+        //                    // Init realIndexes array
+        //                    realIndexesOfSearchResults = new ArrayList<Integer>();
+        //                    for (int i = 0; i < notes.length(); i++)
+        //                        realIndexesOfSearchResults.add(i);
+//
+        //                    adapter.notifyDataSetChanged();
+//
+        //                    return true;
+        //                }
+//
+        //                @Override
+        //                public boolean onMenuItemActionCollapse(MenuItem item) {
+        //                    searchEnded();
+        //                    return true;
+        //                }
+        //            });
+        //        }
+        //    }
+        //}
     }
 
 

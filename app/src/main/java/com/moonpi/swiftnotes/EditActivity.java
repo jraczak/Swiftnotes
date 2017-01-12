@@ -79,6 +79,7 @@ public class EditActivity extends ActionBarActivity implements Toolbar.OnMenuIte
 
         // Init layout components
         toolbar = (Toolbar)findViewById(R.id.toolbarEdit);
+        setSupportActionBar(toolbar);
         titleEdit = (EditText)findViewById(R.id.titleEdit);
         bodyEdit = (EditText)findViewById(R.id.bodyEdit);
         relativeLayoutEdit = (RelativeLayout)findViewById(R.id.relativeLayoutEdit);
@@ -147,7 +148,9 @@ public class EditActivity extends ActionBarActivity implements Toolbar.OnMenuIte
         toolbar.setTitle("");
 
         // Set a 'Back' navigation icon in the Toolbar and handle the click
-        toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,6 +159,7 @@ public class EditActivity extends ActionBarActivity implements Toolbar.OnMenuIte
         });
 
         // Inflate menu_edit to be displayed in the toolbar
+        //toolbar.setNavigationIcon("?attr/homeAsUpIndicator");
         toolbar.inflateMenu(R.menu.menu_edit);
 
         // Set an OnMenuItemClickListener to handle menu item clicks
