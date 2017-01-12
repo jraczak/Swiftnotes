@@ -21,6 +21,9 @@ import static android.support.test.espresso.action.ViewActions.*;
 import static android.support.test.espresso.assertion.ViewAssertions.*;
 import static android.support.test.espresso.matcher.ViewMatchers.*;
 import static org.hamcrest.CoreMatchers.allOf;
+import android.support.test.runner.AndroidJUnit4;
+import com.xamarin.testcloud.espresso.Factory;
+import com.xamarin.testcloud.espresso.ReportHelper;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
@@ -29,11 +32,15 @@ public class testCreateNote {
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
+    @Rule
+    public ReportHelper reportHelper = Factory.getReportHelper();
+
     @Test
     public void testCreateNote() {
         ViewInteraction appCompatImageButton = onView(
                 allOf(withId(R.id.newNote), withContentDescription("New note"), isDisplayed()));
         appCompatImageButton.perform(click());
+        reportHelper.label("NewNote");
 
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.titleEdit),
@@ -41,6 +48,8 @@ public class testCreateNote {
                                 withParent(withId(android.R.id.content)))),
                         isDisplayed()));
         appCompatEditText.perform(click());
+        reportHelper.label("bla");
+
 
         ViewInteraction appCompatEditText2 = onView(
                 allOf(withId(R.id.titleEdit),
@@ -48,6 +57,8 @@ public class testCreateNote {
                                 withParent(withId(android.R.id.content)))),
                         isDisplayed()));
         appCompatEditText2.perform(replaceText("My note"), closeSoftKeyboard());
+        reportHelper.label("replace text");
+
 
         ViewInteraction appCompatEditText3 = onView(
                 allOf(withId(R.id.bodyEdit),
