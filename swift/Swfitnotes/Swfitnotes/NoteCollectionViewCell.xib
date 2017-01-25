@@ -41,7 +41,7 @@
                             <constraint firstAttribute="width" constant="30" id="9OZ-70-Jrd"/>
                             <constraint firstAttribute="width" secondItem="xvc-kg-TdV" secondAttribute="height" multiplier="1:1" id="KhG-zT-dag"/>
                         </constraints>
-                        <state key="normal" title="Star" image="inactive_star_button"/>
+                        <state key="normal" title="Star" image="star_button_false"/>
                     </button>
                 </subviews>
             </view>
@@ -67,6 +67,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="inactive_star_button" width="96" height="92"/>
+        <image name="star_button_false" width="96" height="92"/>
     </resources>
 </document>

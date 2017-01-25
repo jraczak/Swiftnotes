@@ -51,10 +51,6 @@ class SwiftNoteCollectionViewLayout: UICollectionViewLayout {
         }
     }
     
-    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return super.layoutAttributesForItem(at: indexPath)
-    }
-    
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         return cache
     }

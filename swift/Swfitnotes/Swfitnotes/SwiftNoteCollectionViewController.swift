@@ -88,12 +88,11 @@ class SwiftNoteCollectionViewController: UICollectionViewController {
         
         let note = frc.object(at: indexPath)
         
-        let returnCell = configureCell(cell: cell, note: note)
-        
+        let returnCell = configureCell(cell: cell, note: note, indexPath: indexPath)
         return returnCell
     }
     
-    func configureCell(cell: NoteCollectionViewCell, note: Note) -> NoteCollectionViewCell{
+    func configureCell(cell: NoteCollectionViewCell, note: Note, indexPath: IndexPath) -> NoteCollectionViewCell{
         cell.lblNoteTitle.text = note.title
         
         if note.body.isEmpty {
@@ -103,6 +102,8 @@ class SwiftNoteCollectionViewController: UICollectionViewController {
             cell.lblNoteBody.text = note.body
             cell.lblNoteBody.sizeToFit()
         }
+        cell.isStarred = note.starred
+        cell.btnNoteStar.addTarget(self, action: #selector(self.didTapStarButton(_:)), for: .touchUpInside)
         
         cell.backgroundColor = note.color
         
@@ -116,8 +117,9 @@ class SwiftNoteCollectionViewController: UICollectionViewController {
         }
         
         let request: NSFetchRequest<Note> = Note.fetchRequest()
+        let starSort = NSSortDescriptor(key: "starred", ascending: false)
         let dateSort = NSSortDescriptor(key: "date", ascending: false)
-        request.sortDescriptors = [dateSort]
+        request.sortDescriptors = [starSort, dateSort]
         
         let aFrc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         aFrc.delegate = self
@@ -135,6 +137,20 @@ class SwiftNoteCollectionViewController: UICollectionViewController {
     
     
     //MARK: - Private Functions
+    
+    internal func didTapStarButton(_ sender: UIButton){
+        let view = sender.superview?.superview as! NoteCollectionViewCell
+        let path = collectionView?.indexPath(for: view)
+//        let indexPath = IndexPath(row: sender.tag, section: 0)
+        let note = frc.object(at: path!)
+        note.starred = !note.starred
+        do {
+            try context.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Failed to save w/ star: \(nsError)")
+        }
+    }
     
     fileprivate func openDetailViewForNote(selectedNote: Note){
         self.delegate?.didSelectNote(newNote: selectedNote)
@@ -186,7 +202,7 @@ class SwiftNoteCollectionViewController: UICollectionViewController {
 //MARK: - NSFetchedResultsControllerDelegate
 extension SwiftNoteCollectionViewController: NSFetchedResultsControllerDelegate{
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        collectionViewItemChanges = [CollectionViewItemChange]()
+        collectionViewItemChanges.removeAll()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
@@ -203,23 +219,21 @@ extension SwiftNoteCollectionViewController: NSFetchedResultsControllerDelegate{
                     self.newNoteCreatedByUser = false
                     let selectedNote = self.frc.object(at: IndexPath(row: 0, section: 0))
                     self.openDetailViewForNote(selectedNote: selectedNote)
-                    self.collectionViewLayout.invalidateLayout()
-                    
                 }
+                 self.collectionViewLayout.invalidateLayout()
             }
         })
     }
     
     func performCollectionViewItemChange(change: CollectionViewItemChange){
         let changeType = change.keys.first!
-        print("Change Type: \(changeType.rawValue)")
         let indexPaths: [IndexPath] = change[changeType]!.flatMap{$0}
         
         switch change.keys.first! {
         case .insert:
-            collectionView?.insertItems(at: indexPaths)
+            collectionView?.insertItems(at: [indexPaths[0]])
         case .update:
-            collectionView?.reloadItems(at: indexPaths)
+            collectionView?.reloadItems(at: [indexPaths[0]])
         case .move:
             if indexPaths[0]==indexPaths[1]{
                 collectionView?.reloadItems(at: [indexPaths[0]])
@@ -228,7 +242,7 @@ extension SwiftNoteCollectionViewController: NSFetchedResultsControllerDelegate{
                 collectionView?.insertItems(at: [indexPaths[1]])
             }
         case .delete:
-            collectionView?.deleteItems(at: indexPaths)
+            collectionView?.deleteItems(at: [indexPaths[0]])
         }
     }
 
