@@ -19,6 +19,17 @@ class NoteCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    var isMarkedForDeletion: Bool = false {
+        didSet{
+            if isMarkedForDeletion {
+                self.layer.borderColor = UIColor.green.cgColor
+                self.layer.borderWidth = 2.0
+            } else{
+                self.layer.borderWidth = 0.0
+            }
+    }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layer.cornerRadius = 3

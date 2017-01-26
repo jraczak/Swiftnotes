@@ -21,7 +21,7 @@ class SwiftNoteCollectionViewController: UICollectionViewController {
     var collectionViewItemChanges = [CollectionViewItemChange]()
     weak var delegate: NoteSelectionDelegate?
     var collapseViewController = true
-
+    var markedForDeletion = [IndexPath]()
     var detailViewController: DetailViewController?
     let context = DataController.sharedInstance.managedObjectContext
     
@@ -65,9 +65,39 @@ class SwiftNoteCollectionViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        if editing {
+            let deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteNotes(_:)))
+            self.navigationItem.setRightBarButtonItems([deleteButton], animated: true)
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
+            self.collectionView?.reloadData()
+        } else {
+            let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
+            let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
+            self.navigationItem.setRightBarButtonItems([addButton, searchButton], animated: true)
+            self.collectionView?.reloadData()
+        }
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedNote = frc.object(at: indexPath)
-        openDetailViewForNote(selectedNote: selectedNote)
+        if self.isEditing {
+            if let cell = collectionView.cellForItem(at: indexPath) as? NoteCollectionViewCell{
+                if cell.isMarkedForDeletion {
+                    cell.isMarkedForDeletion = false
+                    if let item = markedForDeletion.index(of: indexPath) {
+                        markedForDeletion.remove(at: item)
+                    }
+                } else {
+                    cell.isMarkedForDeletion = true
+                    markedForDeletion.append(indexPath)
+                }
+            }
+            navigationItem.rightBarButtonItem?.isEnabled = !markedForDeletion.isEmpty
+        } else {
+            let selectedNote = frc.object(at: indexPath)
+            openDetailViewForNote(selectedNote: selectedNote)
+        }
     }
     
     // MARK: - UICollectionViewDataSource
@@ -104,7 +134,7 @@ class SwiftNoteCollectionViewController: UICollectionViewController {
         }
         cell.isStarred = note.starred
         cell.btnNoteStar.addTarget(self, action: #selector(self.didTapStarButton(_:)), for: .touchUpInside)
-        
+        cell.isMarkedForDeletion = false
         cell.backgroundColor = note.color
         
         return cell
@@ -137,6 +167,23 @@ class SwiftNoteCollectionViewController: UICollectionViewController {
     
     
     //MARK: - Private Functions
+    
+    
+    internal func  deleteNotes(_ sender: UIBarButtonItem){
+        for item in markedForDeletion{
+            let object = frc.object(at: item)
+            context.delete(object)
+        }
+        do{
+            try context.save()
+            markedForDeletion.removeAll()
+            navigationItem.rightBarButtonItem?.isEnabled = false
+            collectionView?.reloadData()
+        } catch {
+            print("Failed to delete Items \(error)")
+            
+        }
+    }
     
     internal func didTapStarButton(_ sender: UIButton){
         let view = sender.superview?.superview as! NoteCollectionViewCell

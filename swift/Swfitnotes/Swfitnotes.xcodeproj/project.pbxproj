@@ -92,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E215921D1E39CB6A00D862A6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E27AC1271E3054D3005E0A4A /* Note.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		E27AC0E71E3052B0005E0A4A = {
 			isa = PBXGroup;
 			children = (
@@ -115,18 +123,16 @@
 		E27AC0F21E3052B1005E0A4A /* Swfitnotes */ = {
 			isa = PBXGroup;
 			children = (
+				E215921D1E39CB6A00D862A6 /* Models */,
 				E27AC1301E309A07005E0A4A /* Views */,
 				E27AC12D1E305C9E005E0A4A /* Utilities */,
 				E27AC1261E3054BA005E0A4A /* Controllers */,
 				E27AC0F31E3052B1005E0A4A /* AppDelegate.swift */,
 				E27AC0FC1E3052B1005E0A4A /* Main.storyboard */,
 				E27AC0FF1E3052B1005E0A4A /* Assets.xcassets */,
-				E27AC0FA1E3052B1005E0A4A /* DetailViewController.swift */,
 				E27AC1011E3052B1005E0A4A /* LaunchScreen.storyboard */,
 				E27AC1041E3052B1005E0A4A /* Info.plist */,
-				E27AC1271E3054D3005E0A4A /* Note.swift */,
 				E27AC1351E30A6CD005E0A4A /* Swiftnotes.xcdatamodeld */,
-				E2CF38401E33A8BE00E4BB01 /* SwiftNoteCollectionViewLayout.swift */,
 			);
 			path = Swfitnotes;
 			sourceTree = "<group>";
@@ -153,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				E27AC1291E305785005E0A4A /* SwiftNoteCollectionViewController.swift */,
+				E2CF38401E33A8BE00E4BB01 /* SwiftNoteCollectionViewLayout.swift */,
+				E27AC0FA1E3052B1005E0A4A /* DetailViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
