@@ -13,10 +13,25 @@ class NoteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var lblNoteTitle: UILabel!
     @IBOutlet weak var lblNoteBody: UILabel!
     @IBOutlet weak var btnNoteStar: UIButton!
+    @IBOutlet weak var lyrSelectedForDeletion: UIView!
+  
     var isStarred: Bool = false{
         didSet {
             btnNoteStar.setImage(UIImage(named: "star_button_\(isStarred)"),for: .normal)
         }
+    }
+    
+    var isMarkedForDeletion: Bool = false {
+        didSet{
+            if isMarkedForDeletion {
+//                self.layer.borderColor = UIColor.green.cgColor
+//                self.layer.borderWidth = 2.0
+                self.lyrSelectedForDeletion.isHidden = false
+            } else{
+//                self.layer.borderWidth = 0.0
+                self.lyrSelectedForDeletion.isHidden = true
+            }
+    }
     }
     
     override func awakeFromNib() {
@@ -36,8 +51,4 @@ class NoteCollectionViewCell: UICollectionViewCell {
         //        self.layer.shadowPath = CGPath(rect: self.bounds, transform: nil)
         
     }
-    
-    @IBAction func tappedStarButton(_ sender: UIButton) {
-    }
-    
 }
