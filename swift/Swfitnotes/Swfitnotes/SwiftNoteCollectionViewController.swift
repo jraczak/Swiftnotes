@@ -38,8 +38,8 @@ class SwiftNoteCollectionViewController: UICollectionViewController {
         self.navigationItem.leftBarButtonItem = self.editButtonItem
     
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
-        let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
-        self.navigationItem.rightBarButtonItems = [addButton, searchButton]
+//        let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
+        self.navigationItem.rightBarButtonItems = [addButton]
         
         splitViewController?.delegate = self
 
@@ -74,8 +74,8 @@ class SwiftNoteCollectionViewController: UICollectionViewController {
             self.collectionView?.reloadData()
         } else {
             let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
-            let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
-            self.navigationItem.setRightBarButtonItems([addButton, searchButton], animated: true)
+//            let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
+            self.navigationItem.setRightBarButtonItems([addButton], animated: true)
             self.collectionView?.reloadData()
         }
     }
@@ -91,6 +91,7 @@ class SwiftNoteCollectionViewController: UICollectionViewController {
                 } else {
                     cell.isMarkedForDeletion = true
                     markedForDeletion.append(indexPath)
+                    
                 }
             }
             navigationItem.rightBarButtonItem?.isEnabled = !markedForDeletion.isEmpty
@@ -133,6 +134,7 @@ class SwiftNoteCollectionViewController: UICollectionViewController {
             cell.lblNoteBody.sizeToFit()
         }
         cell.isStarred = note.starred
+        cell.btnNoteStar.isEnabled = !isEditing
         cell.btnNoteStar.addTarget(self, action: #selector(self.didTapStarButton(_:)), for: .touchUpInside)
         cell.isMarkedForDeletion = false
         cell.backgroundColor = note.color

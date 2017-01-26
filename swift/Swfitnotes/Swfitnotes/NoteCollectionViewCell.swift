@@ -13,6 +13,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var lblNoteTitle: UILabel!
     @IBOutlet weak var lblNoteBody: UILabel!
     @IBOutlet weak var btnNoteStar: UIButton!
+    @IBOutlet weak var lyrSelectedForDeletion: UIView!
     var isStarred: Bool = false{
         didSet {
             btnNoteStar.setImage(UIImage(named: "star_button_\(isStarred)"),for: .normal)
@@ -22,10 +23,12 @@ class NoteCollectionViewCell: UICollectionViewCell {
     var isMarkedForDeletion: Bool = false {
         didSet{
             if isMarkedForDeletion {
-                self.layer.borderColor = UIColor.green.cgColor
-                self.layer.borderWidth = 2.0
+//                self.layer.borderColor = UIColor.green.cgColor
+//                self.layer.borderWidth = 2.0
+                self.lyrSelectedForDeletion.isHidden = false
             } else{
-                self.layer.borderWidth = 0.0
+//                self.layer.borderWidth = 0.0
+                self.lyrSelectedForDeletion.isHidden = true
             }
     }
     }

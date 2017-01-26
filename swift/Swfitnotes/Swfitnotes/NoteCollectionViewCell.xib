@@ -43,25 +43,34 @@
                         </constraints>
                         <state key="normal" title="Star" image="star_button_false"/>
                     </button>
+                    <view hidden="YES" alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nR5-LN-GfD">
+                        <rect key="frame" x="0.0" y="0.0" width="307" height="134"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                 </subviews>
             </view>
             <color key="backgroundColor" red="1" green="0.73793447020000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="nR5-LN-GfD" firstAttribute="centerX" secondItem="7rQ-Zq-TAy" secondAttribute="centerX" id="0zF-eQ-6ys"/>
                 <constraint firstItem="7lH-7m-oL3" firstAttribute="leading" secondItem="7rQ-Zq-TAy" secondAttribute="leading" id="3af-yv-mKh"/>
                 <constraint firstAttribute="trailing" secondItem="xvc-kg-TdV" secondAttribute="trailing" constant="8" id="4St-vx-XwM"/>
                 <constraint firstItem="7rQ-Zq-TAy" firstAttribute="trailing" secondItem="xvc-kg-TdV" secondAttribute="trailing" id="9oY-Gg-d33"/>
                 <constraint firstItem="xvc-kg-TdV" firstAttribute="leading" secondItem="7lH-7m-oL3" secondAttribute="trailing" constant="8" id="DlZ-va-Tww"/>
                 <constraint firstItem="7lH-7m-oL3" firstAttribute="top" secondItem="7rQ-Zq-TAy" secondAttribute="bottom" constant="8" id="Guj-dm-eR9"/>
                 <constraint firstItem="7rQ-Zq-TAy" firstAttribute="trailing" secondItem="gTV-IL-0wX" secondAttribute="trailingMargin" id="Td4-oy-hvo"/>
+                <constraint firstItem="nR5-LN-GfD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="YwO-Wi-qRg"/>
+                <constraint firstItem="nR5-LN-GfD" firstAttribute="centerY" secondItem="xvc-kg-TdV" secondAttribute="centerY" id="dzn-Uw-Arl"/>
                 <constraint firstItem="xvc-kg-TdV" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="fBZ-97-ZeX"/>
                 <constraint firstItem="7rQ-Zq-TAy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="i08-SQ-SVU"/>
                 <constraint firstItem="7rQ-Zq-TAy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="npr-UY-IBt"/>
+                <constraint firstItem="nR5-LN-GfD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="y2n-yx-Nck"/>
             </constraints>
             <size key="customSize" width="121" height="106"/>
             <connections>
                 <outlet property="btnNoteStar" destination="xvc-kg-TdV" id="CeT-I4-62z"/>
                 <outlet property="lblNoteBody" destination="7lH-7m-oL3" id="snh-HP-bcV"/>
                 <outlet property="lblNoteTitle" destination="7rQ-Zq-TAy" id="EFu-ce-7fa"/>
+                <outlet property="lyrSelectedForDeletion" destination="nR5-LN-GfD" id="NKK-MB-Now"/>
             </connections>
             <point key="canvasLocation" x="123.5" y="82"/>
         </collectionViewCell>
