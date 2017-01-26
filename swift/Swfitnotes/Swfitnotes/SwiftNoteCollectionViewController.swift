@@ -18,6 +18,7 @@ class SwiftNoteCollectionViewController: UICollectionViewController {
     //MARK: - Vars and Properties
     fileprivate var isPaused: Bool = false
     fileprivate var newNoteCreatedByUser: Bool = false
+    fileprivate var newNoteId: String?
     var collectionViewItemChanges = [CollectionViewItemChange]()
     weak var delegate: NoteSelectionDelegate?
     var collapseViewController = true
@@ -232,6 +233,7 @@ class SwiftNoteCollectionViewController: UICollectionViewController {
             try context.save()
             sender.isEnabled = false
             newNoteCreatedByUser = true
+            newNoteId = newNote.id
         } catch {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
@@ -267,9 +269,11 @@ extension SwiftNoteCollectionViewController: NSFetchedResultsControllerDelegate{
         }, completion: {(completed: Bool) in
             if completed {
                 if self.newNoteCreatedByUser{
+                    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+                    fetchRequest.predicate = NSPredicate(format: "id IN %@", [self.newNoteId])
+                    let newNotes = try! self.context.fetch(fetchRequest) as! [Note]
                     self.newNoteCreatedByUser = false
-                    let selectedNote = self.frc.object(at: IndexPath(row: 0, section: 0))
-                    self.openDetailViewForNote(selectedNote: selectedNote)
+                    self.openDetailViewForNote(selectedNote: newNotes[0])
                 }
                  self.collectionViewLayout.invalidateLayout()
             }
