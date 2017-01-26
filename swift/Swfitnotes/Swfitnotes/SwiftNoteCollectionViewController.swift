@@ -137,7 +137,7 @@ class SwiftNoteCollectionViewController: UICollectionViewController {
         cell.btnNoteStar.isEnabled = !isEditing
         cell.btnNoteStar.addTarget(self, action: #selector(self.didTapStarButton(_:)), for: .touchUpInside)
         cell.isMarkedForDeletion = false
-        cell.backgroundColor = note.color
+        // cell.backgroundColor = note.color
         
         return cell
     }
