@@ -76,7 +76,9 @@ class SwiftNoteCollectionViewController: UICollectionViewController {
             let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
 //            let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: nil)
             self.navigationItem.setRightBarButtonItems([addButton], animated: true)
+            self.markedForDeletion.removeAll()
             self.collectionView?.reloadData()
+            
         }
     }
     
