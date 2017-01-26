@@ -14,6 +14,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var lblNoteBody: UILabel!
     @IBOutlet weak var btnNoteStar: UIButton!
     @IBOutlet weak var lyrSelectedForDeletion: UIView!
+  
     var isStarred: Bool = false{
         didSet {
             btnNoteStar.setImage(UIImage(named: "star_button_\(isStarred)"),for: .normal)
@@ -50,8 +51,4 @@ class NoteCollectionViewCell: UICollectionViewCell {
         //        self.layer.shadowPath = CGPath(rect: self.bounds, transform: nil)
         
     }
-    
-    @IBAction func tappedStarButton(_ sender: UIButton) {
-    }
-    
 }
