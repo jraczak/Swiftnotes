@@ -45,7 +45,7 @@
                     </button>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="1" green="0.73793447020000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
             <constraints>
                 <constraint firstItem="7lH-7m-oL3" firstAttribute="leading" secondItem="7rQ-Zq-TAy" secondAttribute="leading" id="3af-yv-mKh"/>
                 <constraint firstAttribute="trailing" secondItem="xvc-kg-TdV" secondAttribute="trailing" constant="8" id="4St-vx-XwM"/>

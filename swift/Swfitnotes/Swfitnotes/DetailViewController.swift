@@ -32,7 +32,7 @@ class DetailViewController: UIViewController {
                 title.text = detail.title
                 title.delegate = self
             }
-            self.view.backgroundColor = detailItem?.color
+            // self.view.backgroundColor = detailItem?.color
         }
     }
     

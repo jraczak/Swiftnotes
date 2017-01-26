@@ -105,7 +105,7 @@ class SwiftNoteCollectionViewController: UICollectionViewController {
         cell.isStarred = note.starred
         cell.btnNoteStar.addTarget(self, action: #selector(self.didTapStarButton(_:)), for: .touchUpInside)
         
-        cell.backgroundColor = note.color
+        // cell.backgroundColor = note.color
         
         return cell
     }

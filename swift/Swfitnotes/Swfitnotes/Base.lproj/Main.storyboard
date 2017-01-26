@@ -84,7 +84,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.73793447020000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <constraints>
                             <constraint firstItem="jY6-yX-KDB" firstAttribute="centerY" secondItem="sxk-Qt-c7p" secondAttribute="centerY" id="117-pJ-GhL"/>
                             <constraint firstItem="sxk-Qt-c7p" firstAttribute="leading" secondItem="ofO-D8-cNh" secondAttribute="leading" id="A9z-gJ-cMd"/>
