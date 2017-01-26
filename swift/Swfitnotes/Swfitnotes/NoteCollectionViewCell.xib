@@ -20,6 +20,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="307" height="134"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <view hidden="YES" alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nR5-LN-GfD">
+                        <rect key="frame" x="0.0" y="0.0" width="307" height="134"/>
+                        <color key="backgroundColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rQ-Zq-TAy">
                         <rect key="frame" x="8" y="8" width="291" height="34"/>
                         <constraints>
@@ -43,10 +47,6 @@
                         </constraints>
                         <state key="normal" title="Star" image="star_button_false"/>
                     </button>
-                    <view hidden="YES" alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nR5-LN-GfD">
-                        <rect key="frame" x="0.0" y="0.0" width="307" height="134"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
                 </subviews>
             </view>
             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
