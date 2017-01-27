@@ -33,8 +33,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lH-7m-oL3">
-                        <rect key="frame" x="8" y="50" width="253" height="0.0"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lH-7m-oL3">
+                        <rect key="frame" x="8" y="50" width="253" height="76"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -57,6 +57,7 @@
                 <constraint firstItem="7rQ-Zq-TAy" firstAttribute="trailing" secondItem="xvc-kg-TdV" secondAttribute="trailing" id="9oY-Gg-d33"/>
                 <constraint firstItem="xvc-kg-TdV" firstAttribute="leading" secondItem="7lH-7m-oL3" secondAttribute="trailing" constant="8" id="DlZ-va-Tww"/>
                 <constraint firstItem="7lH-7m-oL3" firstAttribute="top" secondItem="7rQ-Zq-TAy" secondAttribute="bottom" constant="8" id="Guj-dm-eR9"/>
+                <constraint firstAttribute="bottom" secondItem="7lH-7m-oL3" secondAttribute="bottom" constant="8" id="O6d-B9-4Ac"/>
                 <constraint firstItem="7rQ-Zq-TAy" firstAttribute="trailing" secondItem="gTV-IL-0wX" secondAttribute="trailingMargin" id="Td4-oy-hvo"/>
                 <constraint firstItem="nR5-LN-GfD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="YwO-Wi-qRg"/>
                 <constraint firstItem="nR5-LN-GfD" firstAttribute="centerY" secondItem="xvc-kg-TdV" secondAttribute="centerY" id="dzn-Uw-Arl"/>
