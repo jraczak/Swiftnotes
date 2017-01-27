@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let _  = DataController.sharedInstance
         let splitViewController = self.window!.rootViewController as! UISplitViewController
         let leftViewController = splitViewController.viewControllers.first as! UINavigationController
         let masterViewController = leftViewController.topViewController as! SwiftNoteCollectionViewController
