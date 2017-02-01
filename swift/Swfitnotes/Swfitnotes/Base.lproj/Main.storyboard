@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="H1p-Uh-vWS">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Master-->
+        <scene sceneID="pY4-Hu-kfo">
+            <objects>
+                <navigationController title="Master" id="RMx-3f-FxP" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Pmd-2v-anx" customClass="SwiftNoteNavigationBar" customModule="Swfitnotes" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <color key="barTintColor" red="0.81716078519821167" green="0.00067074561957269907" blue="0.17035222053527832" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="qfl-nG-ezl" kind="relationship" relationship="rootViewController" id="TVH-kb-eFT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8fS-aE-onr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-38" y="-630"/>
+        </scene>
+        <!--Swiftnotes-->
+        <scene sceneID="y9H-IA-Vqv">
+            <objects>
+                <collectionViewController id="qfl-nG-ezl" customClass="SwiftNoteCollectionViewController" customModule="Swfitnotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="rXk-hu-RSM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.90186256170272827" green="0.90201735496520996" blue="0.90185278654098511" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <collectionViewLayout key="collectionViewLayout" id="fVr-XZ-AdE" customClass="SwiftNoteCollectionViewLayout" customModule="Swfitnotes" customModuleProvider="target"/>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="qfl-nG-ezl" id="XbV-sS-eZi"/>
+                            <outlet property="delegate" destination="qfl-nG-ezl" id="h1X-QF-EAq"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Swiftnotes" id="nyj-Ks-2UY"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kYa-IR-c8o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="776.79999999999995" y="-632.83358320839591"/>
+        </scene>
+        <!--Detail-->
+        <scene sceneID="yUG-lL-AsK">
+            <objects>
+                <viewController title="Detail" id="JEX-9P-axG" customClass="DetailViewController" customModule="Swfitnotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SYR-Wa-9uf"/>
+                        <viewControllerLayoutGuide type="bottom" id="GAO-Cl-Wes"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="svH-Pt-448">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jY6-yX-KDB">
+                                <rect key="frame" x="0.0" y="64" width="375" height="58"/>
+                                <color key="backgroundColor" name="windowFrameTextColor" catalog="System" colorSpace="catalog"/>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="New Note" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sxk-Qt-c7p">
+                                <rect key="frame" x="16" y="75" width="343" height="36"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ofO-D8-cNh">
+                                <rect key="frame" x="16" y="130" width="343" height="517"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" keyboardAppearance="light"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <constraints>
+                            <constraint firstItem="sxk-Qt-c7p" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" constant="11" id="DWH-Tj-y0z"/>
+                            <constraint firstItem="sxk-Qt-c7p" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leadingMargin" id="KpB-VE-Ovi"/>
+                            <constraint firstItem="sxk-Qt-c7p" firstAttribute="centerY" secondItem="jY6-yX-KDB" secondAttribute="centerY" id="NIh-M2-Els"/>
+                            <constraint firstAttribute="trailing" secondItem="jY6-yX-KDB" secondAttribute="trailing" id="XYr-xB-AhT"/>
+                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="jY6-yX-KDB" secondAttribute="bottom" constant="545" id="m8K-yZ-0D3"/>
+                            <constraint firstItem="jY6-yX-KDB" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="mqT-dq-Fs6"/>
+                            <constraint firstItem="sxk-Qt-c7p" firstAttribute="leading" secondItem="ofO-D8-cNh" secondAttribute="leading" id="nGo-bo-Ywb"/>
+                            <constraint firstItem="ofO-D8-cNh" firstAttribute="top" secondItem="jY6-yX-KDB" secondAttribute="bottom" constant="8" symbolic="YES" id="oDQ-PV-dlg"/>
+                            <constraint firstItem="sxk-Qt-c7p" firstAttribute="centerX" secondItem="jY6-yX-KDB" secondAttribute="centerX" id="p0c-vc-RZU"/>
+                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="ofO-D8-cNh" secondAttribute="bottom" constant="20" id="q5b-AO-Ie2"/>
+                            <constraint firstItem="sxk-Qt-c7p" firstAttribute="trailing" secondItem="ofO-D8-cNh" secondAttribute="trailing" id="rId-5e-73p"/>
+                            <constraint firstItem="jY6-yX-KDB" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="uHm-pi-Ezr"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Swiftnotes" id="mOI-FS-AaM">
+                        <barButtonItem key="backBarButtonItem" title=" " id="5ga-i0-VqB"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="txtBody" destination="ofO-D8-cNh" id="eLx-gw-sYf"/>
+                        <outlet property="txtTitle" destination="sxk-Qt-c7p" id="8PZ-8d-R0h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="776.79999999999995" y="127.28635682158921"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="Nki-YV-4Qg">
+            <objects>
+                <splitViewController id="H1p-Uh-vWS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <connections>
+                        <segue destination="RMx-3f-FxP" kind="relationship" relationship="masterViewController" id="BlO-5A-QYV"/>
+                        <segue destination="vC3-pB-5Vb" kind="relationship" relationship="detailViewController" id="Tll-UG-LXB"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cZU-Oi-B1e" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-856" y="-330"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="r7l-gg-dq7">
+            <objects>
+                <navigationController id="vC3-pB-5Vb" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="DjV-YW-jjY" customClass="SwiftNoteNavigationBar" customModule="Swfitnotes" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.81716078520000002" green="0.00067074561960000004" blue="0.17035222050000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="JEX-9P-axG" kind="relationship" relationship="rootViewController" id="GKi-kA-LjT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-45" y="129"/>
+        </scene>
+    </scenes>
+</document>
