@@ -28,8 +28,7 @@ import static org.hamcrest.CoreMatchers.anyOf;
 import android.support.test.runner.AndroidJUnit4;
 import android.widget.TextView;
 
-import com.xamarin.testcloud.espresso.Factory;
-import com.xamarin.testcloud.espresso.ReportHelper;
+// Import the Test Cloud Espresso extensions here
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
@@ -38,8 +37,7 @@ public class testCreateNote {
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
-    @Rule
-    public ReportHelper reportHelper = Factory.getReportHelper();
+    // Instantiate  your report helper here
 
     @Test
     public void testCreateFirstNote() {
